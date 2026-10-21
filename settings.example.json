@@ -1,0 +1,42 @@
+{
+  "_комментарий": "Скопировать блок hooks в ~/.claude/settings.json, заменив /path/to/harness на свой путь.",
+
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "/path/to/harness/hooks/session.py start" }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          { "type": "command", "command": "/path/to/harness/hooks/session.py end" }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          { "type": "command", "command": "/path/to/harness/hooks/prompt.py" }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Read|Grep|Glob|Edit|Write|MultiEdit",
+        "hooks": [
+          { "type": "command", "command": "/path/to/harness/hooks/guard.py" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "/path/to/harness/hooks/stop.py" }
+        ]
+      }
+    ]
+  }
+}
